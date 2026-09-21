@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+#define READ  0x01
+#define WRITE 0x02
+#define EXEC  0x04
+
+int main()
+{
+    double inch, cm;
+    double F, C;
+
+    scanf("%lf" , &inch);
+    cm = inch * 2.54;
+    printf("%lf inch는 %lf cm 입니다.\n" , inch, cm);
+
+    scanf("%lf", &C);
+    F = (C * 1.8) + 32;
+    printf("섭 씨 %lf 도는 화 씨 %lf도 입니다.\n", C, F);
+
+
+    /* 15번: 초를 시·분·초로 변환 */
+    int total = 7384;
+    int hours = total / 3600;
+    int minutes = (total % 3600) / 60;
+    int seconds = total % 60;
+    printf("%d초는 %d시간 %d분 %d초 입니다.\n", total, hours, minutes, seconds);
+
+
+    /* 16번: 합격 여부 판단 */
+    int score = 75;
+    int attendance = 85;
+    int passed = (score >= 60 && attendance >= 80);
+    printf("합격 여부: %d (1이면 합격, 0이면 불합격)\n", passed);
+
+
+    /* 17번: EXEC 권한 추가 */
+    unsigned int permission = READ | WRITE;
+    permission |= EXEC;
+    printf("권한: 0x%02x\n", permission);
+
+
+    /* 18번: 금액을 화폐 단위로 분해 */
+    int amount;
+
+    scanf("%d", &amount);
+
+    int won10000 = amount / 10000;
+    amount %= 10000;
+    int won1000 = amount / 1000;
+    amount %= 1000;
+    int won100 = amount / 100;
+    amount %= 100;
+    int won10 = amount / 10;
+
+    printf("10000:%d 1000:%d 100:%d 10:%d\n",
+           won10000, won1000, won100, won10);
+
+
+    /* 19번: 윤년 판별 (윤년이면 1, 아니면 0) */
+    int year;
+    int is_leap;
+
+    scanf("%d", &year);
+    is_leap = ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0));
+    printf("%d\n", is_leap);
+
+
+    return 0;
+}
