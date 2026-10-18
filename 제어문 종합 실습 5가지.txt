@@ -1,137 +1,120 @@
-//1번
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-void exerc1(void) 
-    int n, r, abs_r;[cite: 4]
-    double x;[cite: 4]
-    x = 1.0;[cite: 4]
-    printf("input n, r : ");[cite: 4]
-    scanf("%d%d", &n, &r);[cite: 4]
+void exerc1(void) {
+    int n, r, abs_r;
+    double x;
+    x = 1.0;
+    printf("input n, r : ");
+    scanf("%d%d", &n, &r);
 
-    if (r < 0) abs_r = -r;[cite: 4]
-    else abs_r = r;[cite: 4]
+    if (r < 0) abs_r = -r;
+    else abs_r = r;
 
-    for (int i = 0; i < abs_r; i++) {[cite: 4]
-        x *= n;[cite: 4]
+    for (int i = 0;i < abs_r;i++) {
+        x *= n;
     }
-    if (r < 0) x = 1.0 / x;[cite: 4]
 
-    printf("%d의 %d승은 %lf 입니다.", n, r, x);[cite: 4]
+    if (r < 0) x = 1.0 / x;
+
+    printf("%d의 %d승은 %lf 입니다.", n, r, x);
 }
-
-int main()[cite: 4]
-{[cite: 4]
-    exerc1();
-    return 0;
-}
-
-//2번
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-
 void exerc2(void) {
-    int n, result;[cite: 5]
-    result = 1;[cite: 5]
-    printf("input n : ");[cite: 5]
-    scanf("%d", &n);[cite: 5]
-    for (int i = n; i > 0; i--) [cite: 5]
-        result *= i;[cite: 5]
-    printf("%d factorial = %d입니다.", n, result);[cite: 5]
+    int n, result;
+    result = 1;
+    printf("input n : ");
+    scanf("%d", &n);
+
+    for (int i = n; i > 0; i--) result *= i;
+
+    printf("%d factorial = %d입니다.", n, result);
 }
+void exerc3(void) {
+    int n;
+    int n_1, n_2, result;
+    n_2 = 0;
+    n_1 = 1;
+    printf("input n : ");
+    scanf("%d", &n);
 
-int main()[cite: 5]
-{[cite: 5]
-    exerc2();[cite: 5]
-    return 0;[cite: 5]
+    if (n == 0) result = n_2;
+    else if (n == 1) result = n_1;
+    else {
+        for (int i = 2;i <= n;i++) {
+            result = n_1 + n_2;
+            n_2 = n_1;
+            n_1 = result;
+        }
+    }
+
+    printf("%d 번째 숫자는 %d 입니다.", n, result);
 }
-
-//3번
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-
 void exerc4(void) {
-    int sum;[cite: 7]
-    double avg;[cite: 7]
-    int score;[cite: 7]
-    int i = 0;[cite: 7]
+    int sum = 0;
+    double avg;
+    int score;
+    int i = 0;
+
+    while (1) {
+        printf("input score : ");
+        scanf("%d", &score);
+        if (score == -1) break;
+        sum += score;
+        i++;
+        printf("run\n");
+    }
+
+    avg = sum / (double)i;
+    printf("avg = %lf\n", avg);
+}
+void exerc5(void) {
+    char star = '*';
+    int line;
+
+    printf("input line : ");
+    scanf("%d", &line);
+
+    for (int i = 0; i < line; i++) {
+
+        for (int j = 0; j < line - i - 1; j++)
+            printf(" ");
+
+        int star_count = i * 2 + 1;
+
+        for (int j = 0; j < star_count; j++)
+            printf("%c", star);
+
+        printf("\n");
+    }
+}
+int main(void) {
+    int num;
+
+    printf("실행할 문제 번호 입력(1~5) : ");
+	scanf("%d", &num);
     
-    while (1) {[cite: 7]
-        printf("input score : ");[cite: 7]
-        scanf("%d", &score);[cite: 7]
-        if (score == -1) break;[cite: 7]
-        sum += score;[cite: 7]
-        i++;[cite: 7]
-    }[cite: 7]
-    
-    avg = sum / (double)i;[cite: 7]
-    printf("avg = %lf\n", avg);[cite: 7]
-}
-
-int main() {
-    exerc4();[cite: 7]
-    return 0;[cite: 7]
-}
-
-//4번
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-
-void exerc1(void){}
-void exerc2(void){}
-
-void exerc3(void){
-    int n;[cite: 8]
-    int n_1, n_2, result;[cite: 8]
-    n_2 = 0;[cite: 8]
-    n_1 = 1;[cite: 8]
-    printf("input n : ");[cite: 8]
-    scanf("%d", &n);[cite: 8]
-
-    if(n==0) result = n_2;[cite: 8]
-    else if(n==1) result = n_1;[cite: 8]
-    else{[cite: 8]
-        for(int i=2;i<=n;i++){[cite: 8]
-            result = n_1 + n_2;[cite: 8]
-            n_2 = n_1;[cite: 8]
-            n_1 = result;[cite: 8]
-        }[cite: 8]
-    }[cite: 8]
-    printf("%d 번째 숫자는 %d 입니다.", n, result);[cite: 8]
-}
-
-int main()[cite: 8]
-{
-    exerc3();
+	switch (num) {
+	case 1:
+		exerc1();
+		break;
+	case 2:
+		exerc2();
+		break;
+	case 3:
+		exerc3();
+		break;
+	case 4:
+		exerc4();
+		break;
+	case 5:
+		exerc5();
+		break;
+	default:
+		printf("잘못된 입력입니다.");
+	}   
+        
     return 0;
 }
 
-//5번
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
 
-void exerc1(void){}
-void exerc2(void){}
-void exerc3(void){}
-void exerc4(void){}
-
-void exerc5(void){
-    char star = '*';[cite: 9]
-    int line;[cite: 9]
-    printf("input line : ");[cite: 9]
-    scanf("%d", &line);[cite: 9]
-    for(int i=0; i<line; i++){[cite: 9]
-        int star_count = i * 2 + 1;[cite: 9]
-
-        for(int j=0; j<star_count; j++) printf("%c", star);[cite: 9]
-        printf("\n");[cite: 9]
-    }[cite: 9]
-}
-
-void printStar(void){}
-
-int main()
-{
-    printStar();[cite: 9]
-    return 0;[cite: 9]
-}
+    
